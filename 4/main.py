@@ -10,7 +10,7 @@ def check_columns(board):
 
 def check_rows(board):
     for row in board:
-        if [True for e in row.values() if e is True].count(True) == len(board[0]):
+        if list(row.values()).count(True) == len(board[0]):
             return True
     return False
 
