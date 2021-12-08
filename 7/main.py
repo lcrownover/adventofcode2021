@@ -3,8 +3,13 @@ def first(nums):
     target = (s[len(s) // 2])
     return sum(map(lambda x: abs(x - target), nums))
 
+def exp(n):
+    return sum([n for n in range(1, n+1)])
+
 def second(nums):
-    pass
+    s = list(sorted(nums))
+    target = int(sum(s) / len(s))
+    return sum(map(lambda x: exp(abs(x - target)), nums))
 
 
 import sys
@@ -15,4 +20,4 @@ with open(sys.argv[1], "r") as f:
 
 print(first(nums))
 
-# print(second(nums))
+print(second(nums))
