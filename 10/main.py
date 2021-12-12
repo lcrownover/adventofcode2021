@@ -1,10 +1,5 @@
 def process(line) -> str:
-    key = {
-        "(": ")",
-        "[": "]",
-        "{": "}",
-        "<": ">",
-    }
+    key = {"(": ")", "[": "]", "{": "}", "<": ">"}
     expected = []
     stack = []
     queue = list(line)
@@ -19,19 +14,10 @@ def process(line) -> str:
             expected.pop()
     return ""
 
+
 def process2(line) -> int:
-    key = {
-        "(": ")",
-        "[": "]",
-        "{": "}",
-        "<": ">",
-    }
-    score = {
-        ")": 1,
-        "]": 2,
-        "}": 3,
-        ">": 4,
-    }
+    key = {"(": ")", "[": "]", "{": "}", "<": ">"}
+    score = {")": 1, "]": 2, "}": 3, ">": 4}
     expected = []
     stack = []
     queue = list(line)
@@ -50,14 +36,9 @@ def process2(line) -> int:
         total += score[c]
     return total
 
+
 def vals(c: str) -> int:
-    vals = {
-        "": 0,
-        ")": 3,
-        "]": 57,
-        "}": 1197,
-        ">": 25137,
-    }
+    vals = {"": 0, ")": 3, "]": 57, "}": 1197, ">": 25137}
     return vals[c]
 
 
@@ -69,25 +50,22 @@ def first(lines):
     return val
 
 
-
 def second(lines):
     scores = []
-    for i,line in enumerate(lines):
+    for _, line in enumerate(lines):
         score = process2(line)
         if score == 0:
             continue
         scores.append(score)
-    m_i = int(((len(scores)-1)/2))
+    m_i = int(((len(scores) - 1) / 2))
     return sorted(scores)[m_i]
 
-
-import sys
 
 # f = "10/test_inputs.txt"
 f = "10/inputs.txt"
 with open(f, "r") as f:
     lines = [line.strip() for line in f.readlines() if line.strip()]
 
-# print(first(lines))
+print(first(lines))
 
 print(second(lines))
